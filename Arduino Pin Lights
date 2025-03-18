@@ -1,0 +1,30 @@
+/**
+ * CPX Smile on Pin Trigger
+ *
+ * Lights up a yellow smile on the CPX NeoPixels when a specified pin is connected to ground.
+ */
+
+#include <Adafruit_CircuitPlayground.h>
+
+const int triggerPin = A0; // Pin to trigger smile (connect to GND)
+const uint32_t smileColor = CircuitPlayground.strip.Color(255, 255, 0); // Yellow
+
+void setup() {
+  CircuitPlayground.begin();
+  CircuitPlayground.clearPixels();
+  pinMode(triggerPin, INPUT_PULLUP);
+}
+
+void loop() {
+  if (digitalRead(triggerPin) == LOW) {
+    int smilePixels[] = {1, 2, 7, 8, 9, 0};
+    for (int i = 0; i < 6; i++) {
+      CircuitPlayground.strip.setPixelColor(smilePixels[i], smileColor);
+    }
+    CircuitPlayground.strip.show();
+    delay(500);
+    CircuitPlayground.clearPixels();
+    CircuitPlayground.strip.show();
+  }
+  delay(50);
+}
