@@ -1,5 +1,5 @@
 /**
- * CPX Smile on Pin Trigger
+ * Mcken Ezeh CPX Smile on Pin Trigger
  *
  * Lights up a yellow smile on the CPX NeoPixels when a specified pin is connected to ground.
  */
